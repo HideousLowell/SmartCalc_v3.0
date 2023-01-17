@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="207.0" prefWidth="281.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.school21.hlowell.smartcalc.view.valuearea.ValueAreaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="289.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.school21.hlowell.smartcalc.view.valuearea.ValueAreaController">
     <children>
-        <Button fx:id="cancelButton" layoutX="178.0" layoutY="156.0" mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel" />
+        <Button fx:id="cancelButton" layoutX="177.0" layoutY="220.0" mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel" />
         <Text layoutX="35.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min X:" />
-        <Text layoutX="113.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the values" />
-        <TextField fx:id="minXfield" layoutX="80.0" layoutY="40.0" text="-100" />
+        <Text layoutX="95.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the area values" wrappingWidth="119.0" />
+        <TextField fx:id="minXfield" layoutX="80.0" layoutY="40.0" />
         <Text layoutX="35.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max X:" />
-        <TextField fx:id="maxXfield" layoutX="80.0" layoutY="77.0" text="100" />
-        <Text layoutX="35.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Step" />
-        <TextField fx:id="stepField" layoutX="80.0" layoutY="114.0" text="1" />
-        <Button fx:id="okButton" layoutX="81.0" layoutY="156.0" mnemonicParsing="false" onAction="#onOkButtonClick" prefHeight="25.0" prefWidth="58.0" text="OK" />
+        <TextField fx:id="maxXfield" layoutX="80.0" layoutY="77.0" />
+        <Text layoutX="35.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Step" />
+        <TextField fx:id="stepField" layoutX="80.0" layoutY="182.0" />
+        <Button fx:id="okButton" layoutX="80.0" layoutY="220.0" mnemonicParsing="false" onAction="#onOkButtonClick" prefHeight="25.0" prefWidth="58.0" text="OK" />
+      <Text layoutX="35.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min Y:" />
+      <TextField fx:id="minYfield" layoutX="80.0" layoutY="110.0" />
+      <Text layoutX="35.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Y:" />
+      <TextField fx:id="maxYfield" layoutX="80.0" layoutY="147.0" />
     </children>
 </AnchorPane>

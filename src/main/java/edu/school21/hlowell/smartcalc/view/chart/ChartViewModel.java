@@ -14,9 +14,12 @@ import lombok.Getter;
 public class ChartViewModel {
 
     private final CalcModel calcModel;
-    private final StringProperty minX = new SimpleStringProperty();
-    private final StringProperty maxX = new SimpleStringProperty();
-    private final StringProperty stepField = new SimpleStringProperty();
+    private final StringProperty minX = new SimpleStringProperty("-10");
+    private final StringProperty maxX = new SimpleStringProperty("10");
+    private final StringProperty minY = new SimpleStringProperty("-10");
+    private final StringProperty maxY = new SimpleStringProperty("10");
+    private final StringProperty stepField = new SimpleStringProperty("0.1");
+    private final StringProperty mathProblem = new SimpleStringProperty();
 
     private final ValueArea valueArea = new ValueArea();
     private final ObservableList<XYChart.Data<Number, Number>>
@@ -25,12 +28,15 @@ public class ChartViewModel {
     public ChartViewModel(CalcModel calcModel) {
         this.calcModel = calcModel;
         Bindings.bindContent(chartsXY, calcModel.getChartsXY());
+        mathProblem.bind(calcModel.getMathProblem());
     }
 
     public void update() throws RuntimeException {
         valueArea.setMinX(Double.parseDouble(minX.get()));
         valueArea.setMaxX(Double.parseDouble(maxX.get()));
+        valueArea.setMinY(Double.parseDouble(minY.get()));
+        valueArea.setMaxY(Double.parseDouble(maxY.get()));
         valueArea.setStep(Double.parseDouble(stepField.get()));
-        calcModel.update(valueArea);
+        calcModel.updateChartsXY(valueArea);
     }
 }

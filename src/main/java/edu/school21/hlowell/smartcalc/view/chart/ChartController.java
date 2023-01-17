@@ -11,7 +11,7 @@ public class ChartController {
 
     public void init(ChartViewModel chartViewModel) {
         XYChart.Series<Number, Number> series = new XYChart.Series<>(chartViewModel.getChartsXY());
-        series.setName("graph # 1");
+        series.setName(chartViewModel.getMathProblem().get());
         funcChart.getData().add(series);
     }
 

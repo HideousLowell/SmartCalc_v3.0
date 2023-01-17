@@ -16,6 +16,12 @@ public class ValueAreaController {
     private TextField minXfield;
 
     @FXML
+    private TextField minYfield;
+
+    @FXML
+    private TextField maxYfield;
+
+    @FXML
     private TextField stepField;
 
     private ChartViewModel chartViewModel;
@@ -23,9 +29,10 @@ public class ValueAreaController {
     public void init(ViewHandler viewHandler, ChartViewModel chartViewModel) {
         this.chartViewModel = chartViewModel;
         this.viewHandler = viewHandler;
-
         minXfield.textProperty().bindBidirectional(chartViewModel.getMinX());
         maxXfield.textProperty().bindBidirectional(chartViewModel.getMaxX());
+        minYfield.textProperty().bindBidirectional(chartViewModel.getMinY());
+        maxYfield.textProperty().bindBidirectional(chartViewModel.getMaxY());
         stepField.textProperty().bindBidirectional(chartViewModel.getStepField());
     }
 

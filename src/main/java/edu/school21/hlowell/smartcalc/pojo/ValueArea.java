@@ -11,5 +11,7 @@ import java.util.List;
 public class ValueArea {
     private double minX;
     private double maxX;
+    private double minY;
+    private double maxY;
     private double step;
 }

@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.school21.hlowell.smartcalc.view.calc.CalcController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.school21.hlowell.smartcalc.view.calc.CalcController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <HBox prefHeight="66.0" prefWidth="595.0">
         <children>
-            <TextField fx:id="mainField" alignment="CENTER_RIGHT" onKeyPressed="#keyPressed" prefHeight="66.0" prefWidth="464.0" text="0">
+            <TextField fx:id="mainField" alignment="CENTER_RIGHT" onKeyPressed="#keyPressed" prefHeight="66.0" prefWidth="382.0" text="0">
             <font>
                <Font size="14.0" />
             </font></TextField>
@@ -25,7 +32,14 @@
     </HBox>
     <HBox prefHeight="100.0" prefWidth="200.0">
         <children>
-            <Button fx:id="graph" mnemonicParsing="false" onAction="#onChartButtonClick" prefHeight="25.0" prefWidth="71.0" text="Chart" />
+         <MenuButton mnemonicParsing="false" prefWidth="69.0" text="Menu">
+           <items>
+               <MenuItem mnemonicParsing="false" onAction="#onChartButtonClick" text="Chart" />
+             <MenuItem mnemonicParsing="false" onAction="#showHistory" text="Show history" />
+             <MenuItem mnemonicParsing="false" onAction="#deleteHistory" text="Delete history" />
+               <MenuItem mnemonicParsing="false" onAction="#loanCalculator" text="Loan calculator" />
+           </items>
+         </MenuButton>
         </children>
     </HBox>
     <GridPane minHeight="200.0">

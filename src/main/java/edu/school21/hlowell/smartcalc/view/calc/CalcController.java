@@ -2,6 +2,7 @@ package edu.school21.hlowell.smartcalc.view.calc;
 
 import edu.school21.hlowell.smartcalc.core.ViewHandler;
 import edu.school21.hlowell.smartcalc.view.dialogs.ChooseXDialog;
+import edu.school21.hlowell.smartcalc.view.history.HistoryViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
@@ -20,12 +22,19 @@ public class CalcController {
 
     private ViewHandler viewHandler;
     private CalcViewModel calcViewModel;
+    private HistoryViewModel historyViewModel;
 
-    public void init(ViewHandler viewHandler, CalcViewModel calcViewModel) {
+    public void init(ViewHandler viewHandler, CalcViewModel cvm, HistoryViewModel hvm) {
         this.viewHandler = viewHandler;
-        this.calcViewModel = calcViewModel;
-        mainField.textProperty().bindBidirectional(calcViewModel.mathProblemProperty());
+        this.calcViewModel = cvm;
+        this.historyViewModel = hvm;
+        mainField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.isEmpty())
+                mainField.setText("0");
+        });
+        mainField.textProperty().bindBidirectional(calcViewModel.mainFieldProperty());
     }
+
 
     @FXML
     void keyPressed(KeyEvent event) {
@@ -36,23 +45,30 @@ public class CalcController {
     @FXML
     private void onSimpleCalcButtonsHandler(ActionEvent event) {
         String value = ((Button) event.getSource()).getText();
-        calcViewModel.addText(value);
+        addText(value);
     }
 
     @FXML
     private void onFuncButtonsHandler(ActionEvent event) {
         onSimpleCalcButtonsHandler(event);
-        calcViewModel.addText("(");
+        addText("(");
+    }
+
+    public void addText(String s) {
+        if (mainField.textProperty().get().equals("0")) mainField.textProperty().set(s);
+        else mainField.textProperty().set(mainField.textProperty().get() + s);
     }
 
     @FXML
     private void onCButtonHandler() {
-        calcViewModel.deleteLastChar();
+        String chopped = StringUtils.chop(mainField.textProperty().get());
+        mainField.textProperty().set(chopped);
     }
 
     @FXML
     private void onACButtonHandler() {
-        calcViewModel.setZero();
+        mainField.textProperty().set("0");
+        mainField.requestFocus();
     }
 
     @FXML
@@ -69,6 +85,16 @@ public class CalcController {
     private void onChartButtonClick() {
         calcViewModel.saveMathProblem();
         viewHandler.openValueAreaDialog();
+    }
+
+    @FXML
+    private void showHistory() {
+        viewHandler.openHistoryView();
+    }
+
+    @FXML
+    private void deleteHistory() {
+        historyViewModel.deleteHistory();
     }
 
     public void chooseX() {

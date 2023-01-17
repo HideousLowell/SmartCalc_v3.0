@@ -1,31 +1,36 @@
 package edu.school21.hlowell.smartcalc.view.calc;
 
 import edu.school21.hlowell.smartcalc.model.CalcModel;
+import edu.school21.hlowell.smartcalc.model.history.HistoryModel;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 
-@RequiredArgsConstructor
 public class CalcViewModel {
 
     private final CalcModel calcModel;
-    private final StringProperty mathProblem = new SimpleStringProperty("");
+    private final StringProperty mainField = new SimpleStringProperty("");
+    private final HistoryModel historyModel;
     private DoubleProperty xValue;
 
-    public StringProperty mathProblemProperty() {
-        return mathProblem;
+    public CalcViewModel(CalcModel cm, HistoryModel hm) {
+        calcModel = cm;
+        historyModel = hm;
+        mainField.bindBidirectional(calcModel.resultProperty());
+    }
+
+    public StringProperty mainFieldProperty() {
+        return mainField;
     }
 
     public void calculate() {
-        if (mathProblem.get().indexOf('x') != -1) {
+        if (mainField.get().indexOf('x') != -1) {
             if (xValue == null)
                throw new IllegalArgumentException("Enter the x value");
         }
-        calcModel.calculate(mathProblem.get());
-        mathProblem.setValue(calcModel.getResult());
+        historyModel.save(mainField.get());
+        calcModel.update(mainField.get());
         xValue = null;
     }
 
@@ -35,21 +40,12 @@ public class CalcViewModel {
     }
 
     public void saveMathProblem() {
-        calcModel.setMathProblem(mathProblem.get());
+        calcModel.setMathProblem(mainField.get());
     }
 
-    public void setZero() {
-        mathProblem.set("0");
-    }
-
-    public void deleteLastChar() {
-        String chopped = StringUtils.chop(mathProblem.get());
-        mathProblem.set(chopped.equals("") ? "0" : chopped);
-    }
-
-    public void addText(String s) {
-        if (mathProblem.get().equals("0")) mathProblem.set("");
-        mathProblem.set(mathProblem.get() + s);
+    public void setMathProblem(String string) {
+        mainField.set(string);
+        calcModel.setMathProblem(mainField.get());
     }
 
 }
