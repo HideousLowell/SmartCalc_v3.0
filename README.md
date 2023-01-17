@@ -4,6 +4,6 @@ Model–view–viewmodel pattern
 The core of computing in C-language
 _____
 ## Technology stack
-``Java 8`` ``JAVAFX`` ``JNA`` ``Maven``
+``Java 8`` ``JavaFX`` ``JNA`` ``Maven``
 ____
 
