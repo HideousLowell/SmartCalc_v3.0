@@ -4,25 +4,23 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Arrays;
-import java.util.List;
 
-import static java.lang.Math.pow;
+public class LoanModel {
 
-public class CreditModel {
+    private final ObservableList<Double> result = FXCollections.observableArrayList();
 
-    private final ObservableList<Double> annuity = FXCollections.observableArrayList();
-    private final ObservableList<Double> differentiated = FXCollections.observableArrayList();
-
-    public static List<Double> annuityPayment(double amount, int term, double rate) {
-        rate /= (100 * 12);
-        double monthlyPayment = amount * (rate / (1 - pow(1 + rate, -term)));
+    public void annuityPayment(double amount, int term, double rate) {
+        double monthlyRate = (rate / 100.0) / 12;
+        int termsInMonths = term * 12;
+        double monthlyPayment = (monthlyRate * amount) / (1 - Math.pow((1 + monthlyRate), -termsInMonths));
         double amountToReturn = monthlyPayment * term;
         double overpayment = amountToReturn - amount;
-        return Arrays.asList(amountToReturn, overpayment, monthlyPayment);
+        result.clear();
+        result.addAll(Arrays.asList(amountToReturn, overpayment, monthlyPayment));
     }
 
-    public static List<Double> difPayment(double amount, int term, double rate) {
-        rate /= (100 * 12);
+    public void difPayment(double amount, int term, double rate) {
+        rate /= 1200;
         double monthlyPercent = amount * rate;
         double monthlyPayment = amount / term + monthlyPercent;
         double lastMonthPayment = monthlyPayment;
@@ -35,6 +33,11 @@ public class CreditModel {
             amountToReturn += lastMonthPayment;
         }
         double overpayment = amountToReturn - amount;
-        return Arrays.asList(amountToReturn, overpayment, monthlyPayment, lastMonthPayment);
+        result.clear();
+        result.addAll(Arrays.asList(amountToReturn, overpayment, monthlyPayment, lastMonthPayment));
+    }
+
+    public ObservableList<Double> getResult() {
+        return result;
     }
 }

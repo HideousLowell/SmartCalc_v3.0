@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -16,7 +15,7 @@ import lombok.Getter;
 public class HistoryController {
 
     private ObservableList<String> tableData = FXCollections.observableArrayList();
-    private  HistoryViewModel historyViewModel;
+    private HistoryViewModel historyViewModel;
 
     public void init(Stage stage, HistoryViewModel historyViewModel) {
         this.historyViewModel = historyViewModel;

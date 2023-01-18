@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TextField fx:id="amountField" layoutX="136.0" layoutY="70.0" />
-      <TextField fx:id="termField" layoutX="136.0" layoutY="114.0" />
-      <TextField fx:id="rateField" layoutX="136.0" layoutY="157.0" />
-      <Label layoutX="53.0" layoutY="74.0" text="Amount :" />
-      <Label layoutX="53.0" layoutY="118.0" text="Term :" />
-      <Label layoutX="53.0" layoutY="161.0" text="Rate :" />
-      <ChoiceBox layoutX="136.0" layoutY="210.0" prefWidth="150.0" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.school21.hlowell.smartcalc.view.loan.LoanController">
+    <children>
+        <TextField fx:id="amountField" layoutX="114.0" layoutY="80.0" prefHeight="25.0" prefWidth="78.0" />
+        <TextField fx:id="termField" layoutX="114.0" layoutY="124.0" prefHeight="25.0" prefWidth="78.0" />
+        <TextField fx:id="rateField" layoutX="114.0" layoutY="167.0" prefHeight="25.0" prefWidth="78.0" />
+        <Label layoutX="18.0" layoutY="84.0" text="Amount (c.u.) :" />
+      <Button layoutX="165.0" layoutY="244.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="25.0" prefWidth="139.0" text="Back to calculator" />
+        <Label layoutX="28.0" layoutY="128.0" text="Term (years) :" />
+        <Label layoutX="56.0" layoutY="171.0" text="Rate % :" />
+        <ChoiceBox fx:id="paymentType" layoutX="104.0" layoutY="36.0" prefHeight="25.0" prefWidth="99.0" />
+      <Button layoutX="165.0" layoutY="213.0" mnemonicParsing="false" onAction="#calculate" prefHeight="25.0" prefWidth="139.0" text="Calculate" />
+      <Text layoutX="15.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment type :" />
+      <Text layoutX="216.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount ro return :" />
+      <Text layoutX="234.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overpayment :" />
+      <Text layoutX="213.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly payment :" />
+      <Label fx:id="amountToReturnField" layoutX="328.0" layoutY="171.0" prefHeight="17.0" prefWidth="113.0" />
+      <Label fx:id="overpaymentField" layoutX="328.0" layoutY="127.0" prefHeight="17.0" prefWidth="113.0" />
+      <Label fx:id="monthlyPaymentField" layoutX="331.0" layoutY="83.0" prefHeight="17.0" prefWidth="113.0" />
+      <Text layoutX="283.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan calculations" />
+    </children>
 </AnchorPane>

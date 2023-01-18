@@ -97,6 +97,11 @@ public class CalcController {
         historyViewModel.deleteHistory();
     }
 
+    @FXML
+    private void loanCalculator() {
+        viewHandler.openLoanView();
+    }
+
     public void chooseX() {
         try {
             ChooseXDialog chooseXDialog = new ChooseXDialog();

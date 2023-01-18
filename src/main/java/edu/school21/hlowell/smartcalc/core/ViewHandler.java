@@ -4,6 +4,7 @@ import edu.school21.hlowell.smartcalc.view.calc.CalcController;
 import edu.school21.hlowell.smartcalc.view.chart.ChartController;
 import edu.school21.hlowell.smartcalc.view.dialogs.ErrorPopUp;
 import edu.school21.hlowell.smartcalc.view.history.HistoryController;
+import edu.school21.hlowell.smartcalc.view.loan.LoanController;
 import edu.school21.hlowell.smartcalc.view.valuearea.ValueAreaController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,7 +20,7 @@ public class ViewHandler {
     private final Stage mainStage;
     private final ViewModelFactory vmf;
 
-    public void start() throws IOException {
+    public void start() {
         openCalcView();
         mainStage.show();
     }
@@ -68,16 +69,20 @@ public class ViewHandler {
             ValueAreaController controller = loader.getController();
             controller.init(this, vmf.getChartViewModel());
             mainStage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ignore) {
         }
     }
 
-    public void openLoanCalc() {
-
+    public void openLoanView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(ViewHandler.class.getClassLoader().getResource("loan.fxml"));
+            Scene scene = new Scene(loader.load());
+            LoanController controller = loader.getController();
+            controller.init(this, vmf.getLoanViewModel());
+            mainStage.setScene(scene);
+        } catch (IOException ignore) {
+        }
     }
-
-
 
     public void popError(String error) {
         new ErrorPopUp(error);
