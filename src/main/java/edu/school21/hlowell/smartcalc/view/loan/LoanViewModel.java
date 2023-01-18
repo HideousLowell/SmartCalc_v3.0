@@ -6,8 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 public class LoanViewModel {
 
@@ -15,12 +13,12 @@ public class LoanViewModel {
     public final String ANNUITY = "Annuity";
     public final String DIFFERENTIAL = "Differential";
 
-    private StringProperty amount = new SimpleStringProperty("");
-    private StringProperty rate = new SimpleStringProperty("");
-    private StringProperty term = new SimpleStringProperty("");
-    private StringProperty amountToReturn = new SimpleStringProperty("");
-    private StringProperty overpayment = new SimpleStringProperty("");
-    private StringProperty monthlyPayment = new SimpleStringProperty("");
+    private final StringProperty amount = new SimpleStringProperty();
+    private final StringProperty rate = new SimpleStringProperty();
+    private final StringProperty term = new SimpleStringProperty();
+    private final StringProperty amountToReturn = new SimpleStringProperty();
+    private final StringProperty overpayment = new SimpleStringProperty();
+    private final StringProperty monthlyPayment = new SimpleStringProperty();
 
     private final ObservableList<Double> result = FXCollections.observableArrayList();
 
@@ -43,9 +41,12 @@ public class LoanViewModel {
 
     public void calculate(String payment) throws NumberFormatException {
         double amountValue = Double.parseDouble(amount.getValue());
-        int termValue = Integer.parseInt(term.getValue());
-        if (termValue < 1) throw new RuntimeException("Minimal term is 1");
+        double termValue = Double.parseDouble(term.getValue());
+        if (termValue < 1) throw new RuntimeException("Minimal term is 1 year");
+        if (termValue > 50) throw new RuntimeException("Maximum term is 50 years");
         double rateValue = Integer.parseInt(rate.getValue());
+        if (rateValue < 0) throw new RuntimeException("Minimal rate is 0");
+        if (rateValue > 999) throw new RuntimeException("Maximum rate is 999");
         switch (payment) {
             case ANNUITY:
                 loanModel.annuityPayment(amountValue, termValue, rateValue);
@@ -63,7 +64,6 @@ public class LoanViewModel {
     public StringProperty amountToReturnProperty() {
         return amountToReturn;
     }
-
 
     public StringProperty monthlyPaymentProperty() {
         return monthlyPayment;

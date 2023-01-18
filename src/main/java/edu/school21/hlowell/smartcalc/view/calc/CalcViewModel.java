@@ -30,7 +30,7 @@ public class CalcViewModel {
                throw new IllegalArgumentException("Enter the x value");
         }
         historyModel.save(mainField.get());
-        calcModel.update(mainField.get());
+        calcModel.calculate(mainField.get());
         xValue = null;
     }
 

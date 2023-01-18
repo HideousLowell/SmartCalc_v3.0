@@ -19,21 +19,22 @@ public class CalcModel {
     private Double xValue;
     private StringProperty mathProblem = new SimpleStringProperty("");
     private StringProperty result = new SimpleStringProperty("");
-    private FunctionsNative cLangLibrary;
+    private FunctionsNative cLanguageCore;
     private final ObservableList<XYChart.Data<Number, Number>> chartsXY = FXCollections.observableArrayList();
 
     public CalcModel() {
         try {
-            cLangLibrary = new FunctionsNative("libs/libfunctions.so");
+            cLanguageCore = new FunctionsNative("libs/libfunctions.so");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void update(String mathProblem) {
+    public void calculate(String mathProblem) {
         this.mathProblem.set(mathProblem);
         String replaced = mathProblem.replace("x", String.valueOf(xValue));
-        result.set(cLangLibrary.getResultString(replaced));
+        String answer = cLanguageCore.getResultString(replaced);
+        result.set(answer);
     }
 
     public void updateChartsXY(ValueArea valueArea) {
@@ -41,7 +42,7 @@ public class CalcModel {
         for (double x = valueArea.getMinX(); x < valueArea.getMaxX(); x += valueArea.getStep()) {
             try {
                 String replaced = mathProblem.get().replace("x", String.valueOf(x));
-                String localResult = cLangLibrary.getResultString(replaced);
+                String localResult = cLanguageCore.getResultString(replaced);
                 double result = Double.parseDouble(localResult);
                 if (result > valueArea.getMaxY() || result < valueArea.getMinY())
                     continue;
