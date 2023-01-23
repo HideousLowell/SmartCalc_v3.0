@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 public class ErrorPopUp extends Alert {
 
     public ErrorPopUp(String errorMsg) {
-        super(Alert.AlertType.ERROR);
+        super(AlertType.ERROR);
         setTitle("Error");
         setHeaderText("Check your input");
         setContentText(errorMsg);

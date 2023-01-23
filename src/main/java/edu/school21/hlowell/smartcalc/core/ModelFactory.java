@@ -2,7 +2,7 @@ package edu.school21.hlowell.smartcalc.core;
 
 import edu.school21.hlowell.smartcalc.model.CalcModel;
 import edu.school21.hlowell.smartcalc.model.LoanModel;
-import edu.school21.hlowell.smartcalc.model.history.HistoryModel;
+import edu.school21.hlowell.smartcalc.model.HistoryModel;
 
 public class ModelFactory {
 
@@ -18,7 +18,7 @@ public class ModelFactory {
 
     public HistoryModel getHistoryModel() {
         if (historyModel == null)
-            historyModel = new HistoryModel();
+            historyModel = new HistoryModel("src/main/resources/history.txt");
         return historyModel;
     }
 

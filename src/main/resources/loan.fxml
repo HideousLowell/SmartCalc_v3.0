@@ -4,23 +4,30 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.school21.hlowell.smartcalc.view.loan.LoanController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0"
+            prefWidth="457.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.school21.hlowell.smartcalc.view.loan.LoanController">
     <children>
-        <TextField fx:id="amountField" layoutX="114.0" layoutY="80.0" prefHeight="25.0" prefWidth="78.0" />
-        <TextField fx:id="termField" layoutX="114.0" layoutY="124.0" prefHeight="25.0" prefWidth="78.0" />
-        <TextField fx:id="rateField" layoutX="114.0" layoutY="167.0" prefHeight="25.0" prefWidth="78.0" />
-        <Label layoutX="18.0" layoutY="84.0" text="Amount (c.u.) :" />
-      <Button layoutX="165.0" layoutY="244.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="25.0" prefWidth="139.0" text="Back to calculator" />
-        <Label layoutX="28.0" layoutY="128.0" text="Term (years) :" />
-        <Label layoutX="56.0" layoutY="171.0" text="Rate % :" />
-        <ChoiceBox fx:id="paymentType" layoutX="104.0" layoutY="36.0" prefHeight="25.0" prefWidth="99.0" />
-      <Button layoutX="165.0" layoutY="213.0" mnemonicParsing="false" onAction="#calculate" prefHeight="25.0" prefWidth="139.0" text="Calculate" />
-      <Text layoutX="15.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment type :" />
-      <Text layoutX="274.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount ro return" />
-      <Text layoutX="284.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overpayment" />
-      <Text layoutX="273.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly payment" />
-      <Label fx:id="amountToReturnField" alignment="CENTER" layoutX="235.0" layoutY="167.0" prefHeight="25.0" prefWidth="170.0" textAlignment="CENTER" />
-      <Label fx:id="overpaymentField" alignment="CENTER" layoutX="235.0" layoutY="112.0" prefHeight="25.0" prefWidth="170.0" textAlignment="CENTER" />
-      <Label fx:id="monthlyPaymentField" alignment="CENTER" layoutX="235.0" layoutY="56.0" prefHeight="25.0" prefWidth="170.0" textAlignment="CENTER" />
+        <TextField fx:id="amountField" layoutX="114.0" layoutY="80.0" prefHeight="25.0" prefWidth="78.0"/>
+        <TextField fx:id="termField" layoutX="114.0" layoutY="124.0" prefHeight="25.0" prefWidth="78.0"/>
+        <TextField fx:id="rateField" layoutX="114.0" layoutY="167.0" prefHeight="25.0" prefWidth="78.0"/>
+        <Label layoutX="18.0" layoutY="84.0" text="Amount (c.u.) :"/>
+        <Button layoutX="165.0" layoutY="244.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="25.0"
+                prefWidth="139.0" text="Back to calculator"/>
+        <Label layoutX="28.0" layoutY="128.0" text="Term (years) :"/>
+        <Label layoutX="56.0" layoutY="171.0" text="Rate % :"/>
+        <ChoiceBox fx:id="paymentType" layoutX="104.0" layoutY="36.0" prefHeight="25.0" prefWidth="99.0"/>
+        <Button layoutX="165.0" layoutY="213.0" mnemonicParsing="false" onAction="#calculate" prefHeight="25.0"
+                prefWidth="139.0" text="Calculate"/>
+        <Text layoutX="15.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment type :"/>
+        <Text layoutX="274.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount ro return"/>
+        <Text layoutX="284.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Overpayment"/>
+        <Text layoutX="273.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly payment"/>
+        <Label fx:id="amountToReturnField" alignment="CENTER" layoutX="235.0" layoutY="167.0" prefHeight="25.0"
+               prefWidth="170.0" textAlignment="CENTER"/>
+        <Label fx:id="overpaymentField" alignment="CENTER" layoutX="235.0" layoutY="112.0" prefHeight="25.0"
+               prefWidth="170.0" textAlignment="CENTER"/>
+        <Label fx:id="monthlyPaymentField" alignment="CENTER" layoutX="235.0" layoutY="56.0" prefHeight="25.0"
+               prefWidth="170.0" textAlignment="CENTER"/>
     </children>
 </AnchorPane>

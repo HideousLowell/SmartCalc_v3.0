@@ -24,23 +24,23 @@ public class ValueAreaController {
     @FXML
     private TextField stepField;
 
-    private ChartViewModel chartViewModel;
+    private ValueAreaViewModel viewModel;
 
-    public void init(ViewHandler viewHandler, ChartViewModel chartViewModel) {
-        this.chartViewModel = chartViewModel;
+    public void init(ViewHandler viewHandler, ValueAreaViewModel viewModel) {
+        this.viewModel = viewModel;
         this.viewHandler = viewHandler;
-        minXfield.textProperty().bindBidirectional(chartViewModel.getMinX());
-        maxXfield.textProperty().bindBidirectional(chartViewModel.getMaxX());
-        minYfield.textProperty().bindBidirectional(chartViewModel.getMinY());
-        maxYfield.textProperty().bindBidirectional(chartViewModel.getMaxY());
-        stepField.textProperty().bindBidirectional(chartViewModel.getStepField());
+        minXfield.textProperty().bindBidirectional(viewModel.getMinX());
+        maxXfield.textProperty().bindBidirectional(viewModel.getMaxX());
+        minYfield.textProperty().bindBidirectional(viewModel.getMinY());
+        maxYfield.textProperty().bindBidirectional(viewModel.getMaxY());
+        stepField.textProperty().bindBidirectional(viewModel.getStepField());
     }
 
     @FXML
     public void onOkButtonClick() {
         viewHandler.openCalcView();
         try {
-            chartViewModel.update();
+            viewModel.update();
             viewHandler.openChartView();
         } catch (RuntimeException e) {
             viewHandler.popError("Unable to convert value");

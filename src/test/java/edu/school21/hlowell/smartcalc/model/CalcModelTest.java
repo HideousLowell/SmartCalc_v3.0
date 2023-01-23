@@ -1,6 +1,6 @@
 package edu.school21.hlowell.smartcalc.model;
 
-import edu.school21.hlowell.smartcalc.pojo.ValueArea;
+import edu.school21.hlowell.smartcalc.view.valuearea.ValueArea;
 import javafx.scene.chart.XYChart;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

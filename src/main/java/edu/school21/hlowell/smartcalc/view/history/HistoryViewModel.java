@@ -1,6 +1,6 @@
 package edu.school21.hlowell.smartcalc.view.history;
 
-import edu.school21.hlowell.smartcalc.model.history.HistoryModel;
+import edu.school21.hlowell.smartcalc.model.HistoryModel;
 import edu.school21.hlowell.smartcalc.view.calc.CalcViewModel;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;

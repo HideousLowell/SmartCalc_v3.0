@@ -3,6 +3,7 @@ package edu.school21.hlowell.smartcalc.core;
 import edu.school21.hlowell.smartcalc.view.calc.CalcController;
 import edu.school21.hlowell.smartcalc.view.chart.ChartController;
 import edu.school21.hlowell.smartcalc.view.dialogs.ErrorPopUp;
+import edu.school21.hlowell.smartcalc.view.dialogs.Info;
 import edu.school21.hlowell.smartcalc.view.history.HistoryController;
 import edu.school21.hlowell.smartcalc.view.loan.LoanController;
 import edu.school21.hlowell.smartcalc.view.valuearea.ValueAreaController;
@@ -11,10 +12,12 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.io.IOException;
 
 @RequiredArgsConstructor
+@Setter
 public class ViewHandler {
 
     private final Stage mainStage;
@@ -33,7 +36,6 @@ public class ViewHandler {
             controller.init(this, vmf.getCalcViewModel(), vmf.getHistoryViewModel());
             mainStage.setTitle("SmartCalc v3.0");
             mainStage.setScene(scene);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,10 +66,10 @@ public class ViewHandler {
 
     public void openValueAreaDialog() {
         try {
-            FXMLLoader loader = new FXMLLoader(ViewHandler.class.getClassLoader().getResource("valuearea.fxml"));
+            FXMLLoader loader = new FXMLLoader(ViewHandler.class.getClassLoader().getResource("value_area.fxml"));
             Scene scene = new Scene(loader.load());
             ValueAreaController controller = loader.getController();
-            controller.init(this, vmf.getChartViewModel());
+            controller.init(this, vmf.getValueAreaViewModel());
             mainStage.setScene(scene);
         } catch (IOException ignore) {
         }
@@ -82,6 +84,10 @@ public class ViewHandler {
             mainStage.setScene(scene);
         } catch (IOException ignore) {
         }
+    }
+
+    public void openInfoView() {
+        new Info();
     }
 
     public void popError(String error) {

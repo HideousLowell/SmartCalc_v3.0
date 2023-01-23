@@ -28,13 +28,18 @@ public class CalcController {
         this.viewHandler = viewHandler;
         this.calcViewModel = cvm;
         this.historyViewModel = hvm;
-        mainField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.isEmpty())
-                mainField.setText("0");
-        });
+        formatMainField();
         mainField.textProperty().bindBidirectional(calcViewModel.mainFieldProperty());
     }
 
+    private void formatMainField() {
+        mainField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.isEmpty())
+                mainField.setText("0");
+            else if (newValue.length() == 2 && newValue.startsWith("0"))
+                mainField.setText(String.valueOf(newValue.charAt(1)));
+        });
+    }
 
     @FXML
     void keyPressed(KeyEvent event) {
@@ -82,7 +87,7 @@ public class CalcController {
     }
 
     @FXML
-    private void onChartButtonClick() {
+    private void drawChart() {
         calcViewModel.saveMathProblem();
         viewHandler.openValueAreaDialog();
     }
@@ -93,12 +98,17 @@ public class CalcController {
     }
 
     @FXML
-    private void deleteHistory() {
+    private void clearHistory() {
         historyViewModel.deleteHistory();
     }
 
     @FXML
-    private void loanCalculator() {
+    private void showInfo() {
+        viewHandler.openInfoView();
+    }
+
+    @FXML
+    private void openLoanCalc() {
         viewHandler.openLoanView();
     }
 

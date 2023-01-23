@@ -1,7 +1,7 @@
 package edu.school21.hlowell.smartcalc.view.calc;
 
 import edu.school21.hlowell.smartcalc.model.CalcModel;
-import edu.school21.hlowell.smartcalc.model.history.HistoryModel;
+import edu.school21.hlowell.smartcalc.model.HistoryModel;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;

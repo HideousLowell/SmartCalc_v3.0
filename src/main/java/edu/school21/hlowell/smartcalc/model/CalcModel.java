@@ -1,7 +1,7 @@
 package edu.school21.hlowell.smartcalc.model;
 
 import edu.school21.hlowell.smartcalc.model.jna.FunctionsNative;
-import edu.school21.hlowell.smartcalc.pojo.ValueArea;
+import edu.school21.hlowell.smartcalc.view.valuearea.ValueArea;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
