@@ -11,9 +11,9 @@ ____
 There is installer for MacOS in, so you can install and use it simple with JRE 8+ on board  
 ``libfunctions.so`` compiled for MacOS, for another OS - in progress  
 You can compile the library for your OS using the following code   
-  ``gcc -c -fPIC src/main/c/*.c
-	gcc -shared -o src/main/resources/libs/libfunctions.so *.o
-	rm *.o``  
+``gcc -c -fPIC src/main/c/*.c``  
+``gcc -shared -o src/main/resources/libs/libfunctions.so *.o``  
+``rm *.o``   
 ____
 
 
